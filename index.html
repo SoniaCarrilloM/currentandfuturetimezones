@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
+    <title>Time Zones Current, Future and Guessing</title>
+
+    <style>
+
+      body
+      { background-color: rgb ((rgb(91, 91, 239) rgb(236, 148, 148) );
+
+      }
+
+        button {
+            padding: 30px auto;
+            background-color: turquoise;
+            border-radius: 30%;
+        }
+
+        .future {
+
+            padding: 30px auto;
+            background-color: blueviolet;
+            border-radius: 30%;
+
+
+        }
+
+        .local {
+
+            padding: 30px auto;
+            background-color: rgb(248, 248, 157);
+            border-radius: 30%;
+
+        }
+    </style>
+  </head>
+
+  <body>
+    <button><div id="current-date"></div></button>
+
+    <button class="future"><div id="future-date"></div></button>
+
+    <button class="local"><div id="local-time-zone"></div></button>
+    <script>
+      let timeHonolulu = moment()
+        .tz("Pacific/Honolulu")
+        .format("dddd, MMMM D, YYYY h:m: A");
+      let honoluluElement = document.querySelector("#current-date");
+      honoluluElement.innerHTML = `It is ${timeHonolulu} in Honolulu, Hawai`;
+
+      let timeFrance = moment()
+        .add(10, "years")
+        .tz("France/Paris")
+        .format("dddd, MMMM D, YYYY h:m: A");
+      let franceElement = document.querySelector("#future-date");
+      franceElement.innerHTML = `It is ${timeFrance} in Paris, France`;
+
+      let timeLocal = moment.tz.guess();
+      let localElement = document.querySelector("#local-time-zone");
+      localElement.innerHTML = `Your current time zone is ${timeLocal} and the current time is ${moment().format(
+        "hi:m A"
+      )}`;
+    </script>
+  </body>
+</html>
